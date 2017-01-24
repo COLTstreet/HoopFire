@@ -1,0 +1,31 @@
+<md-dialog aria-label="Injuries">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Injury Report</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon class="fa fa-close" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px;">
+    	<div ng-repeat="player in filteredInjuries | orderBy: '-date'">
+		    <md-card style="background: #5f5f5f;">
+				<md-card-header>
+					<md-card-header-text>
+						<div layout="row">
+							<span class="md-title" style="font-size:1.75em;">{{player.player}}</span> 
+							<span class="md-subhead" style="color:#FFC107;padding-left: 10px;">({{player.type}})</span> 
+						</div> 
+						<span class="md-subhead" style="color:#white">{{player.date}}</span> 
+					</md-card-header-text>
+		        </md-card-header>
+				<md-card-content style="padding-top: 0;">
+					{{player.note}}
+				</md-card-content>
+			</md-card>
+		</div>
+    </md-dialog-content>
+  </form>
+</md-dialog>

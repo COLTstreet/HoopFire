@@ -1,0 +1,217 @@
+<div ng-include="'resources/pages/common/main.html'" ng-controller="navController" onload="setActivePage('nbabb')"></div>
+
+
+
+<div layout="column" layout-align="stretch"  style="height: 1200px" class="nbaContainer" id="container" >
+
+<div class="nbaSubHeader" layout="column" layout-align="center end">
+	<md-fab-speed-dial md-direction="left" class="md-scale" ng-cloak>
+    	<md-fab-trigger>
+      		<md-button aria-label="Schedule" class="md-fab md-accent md-mini">
+        		<i class="fa fa-navicon" aria-hidden="true"></i>
+				<md-tooltip>Tools</md-tooltip>
+      		</md-button>
+    	</md-fab-trigger>
+
+    	<md-fab-actions>
+      		<md-button aria-label="Schedule" class="md-fab md-raised md-mini" ng-click="runTodaysGames()">
+        		<i class="fa fa-calendar" aria-hidden="true"></i>
+				<md-tooltip>todays matchups</md-tooltip>
+      		</md-button>
+    	</md-fab-actions>
+  	</md-fab-speed-dial>
+  	
+<!-- 	<div> -->
+<!-- 		<md-button class="md-fab md-mini" ng-click="runTodaysGames()"> -->
+<!-- 			<i class="fa fa-calendar" aria-hidden="true"></i> -->
+<!-- 			<md-tooltip>add matchup to table</md-tooltip> -->
+<!-- 		</md-button> -->
+<!-- 	</div> -->
+</div>
+
+<section layout="row" layout-xs="column" layout-align="stretch"> 
+	<div flex class="left" style="z-index: 2;" layout="column" layout-align="none">
+		<md-content class="leftContent animated bounceInUp">
+    		<form ng-submit="$event.preventDefault()">
+      			<p style="font-size: 1.5em;">Away Team - {{selectedAwayTeam.team}}</p>
+      			<md-autocomplete
+			          md-no-cache="noCache"
+			          md-selected-item="selectedAwayItem"
+			          md-search-text-change="searchAwayTextChange(searchAwayText)"
+			          md-search-text="searchAwayText"
+			          md-selected-item-change="selectedAwayTeamChange(item)"
+			          md-items="item in querySearch(searchAwayText)"
+			          md-item-text="item.team"
+			          md-min-length="0"
+			          placeholder="Select the away team">
+        			<md-item-template>
+          				<span md-highlight-text="searchAwayText" md-highlight-flags="^i">{{item.team}}</span>
+        			</md-item-template>
+        			<md-not-found>
+          				No states matching "{{searchAwayText}}" were found.
+        			</md-not-found>
+      			</md-autocomplete>
+    		</form>
+  		</md-content>
+  		
+   		<md-card id="cardLeft" class="card cardLeft animated bounceInUp" ng-show="showAwayCard" style="margin: 0;">
+       		<md-card-title>
+         			<md-card-title-text style="text-align: left;">
+           				<span class="md-display-1 bg-text-left" data-bg-text-left="{{awayWinChance}}">{{selectedAwayTeam.team}}</span>
+           				<span class="md-title">({{selectedAwayTeam.w}}-{{selectedAwayTeam.l}})</span>
+         			</md-card-title-text>
+         			<md-card-title-media>
+           				<div id="logo" layout="row" layout-align="center stretch" style="width: 100%;">
+	           				<div class="md-media-md card-media" style="width: 100%;">
+	           					<img alt="Away Team" src="resources/css/img/{{selectedAwayTeam.team}}.png">
+	           				</div>
+           				</div>
+         			</md-card-title-media>
+       		</md-card-title>
+         	<div layout="column" layout-align="center stretch" style="font-size: 3em;padding-right: 3%;text-align: right;">{{awayScore}}
+         	</div>
+       		<md-card-actions layout="row" layout-align="center center">
+         			<md-button ng-click="showInjuries($event)" style="background:#abacac;">Injuries</md-button>
+       		</md-card-actions>
+<!--        		<div id="cardLeft" class="cardBar"></div> -->
+     	</md-card>
+	</div>
+	
+	<div flex class="right" style="z-index: 2;" layout="column" layout-align="none">
+		<div class="rightContent animated bounceInDown">
+    		<form ng-submit="$event.preventDefault()">
+      			<p style="font-size: 1.5em;">Home Team - {{selectedHomeTeam.team}}</p>
+      			<md-autocomplete
+			          md-no-cache="noCache"
+			          md-selected-item="selectedHomeTeam"
+			          md-search-text-change="searchHomeTextChange(searchHomeText)"
+			          md-search-text="searchHomeText"
+			          md-selected-item-change="selectedHomeTeamChange(item)"
+			          md-items="item in querySearch(searchHomeText)"
+			          md-item-text="item.team"
+			          md-min-length="0"
+			          placeholder="Select the home team">
+        			<md-item-template>
+          				<span md-highlight-text="searchHomeText" md-highlight-flags="^i">{{item.team}}</span>
+        			</md-item-template>
+        			<md-not-found>
+          				No states matching "{{searchHomeText}}" were found.
+        			</md-not-found>
+      			</md-autocomplete>
+    		</form>
+  		</div>
+  		
+  		<md-card id="cardRight" class="card cardRight animated bounceInUp" ng-show="showHomeCard" style="margin: 0;">
+       		<md-card-title>
+         			<md-card-title-media>
+           				<div layout="row" layout-align="center stretch" style="width: 100%;"">
+	           				<div class="md-media-md card-media">
+	           					<img alt="Home Team" src="resources/css/img/{{selectedHomeTeam.team}}.png">
+	           				</div>
+	           				
+           				</div>
+         			</md-card-title-media>
+         			<md-card-title-text style="text-align: right;">
+           				<span class="md-display-1 bg-text-right" data-bg-text-right="{{homeWinChance}}">{{selectedHomeTeam.team}}</span>
+           				<span class="md-title">({{selectedHomeTeam.w}}-{{selectedHomeTeam.l}})</span>
+         			</md-card-title-text>
+       		</md-card-title>
+         	<div layout="column" layout-align="center stretch" style="font-size: 3em;padding-left: 3%;">{{homeScore}}</div>
+       		<md-card-actions layout="row" layout-align="center center">
+         			<md-button ng-click="showInjuries($event)" style="background:#abacac;">Injuries</md-button>
+       		</md-card-actions>
+<!--        		<div id="cardRight" class="cardBar"></div> -->
+     	</md-card>
+	</div>
+</section>
+
+<section layout="column" layout-align="center stretch" class="animated bounceInRight"ng-show="showOdds" style="text-align:center; z-index: 1;background: rgba(0, 0, 0, .6);padding: 10px;">
+	<h1 style="margin-bottom: 5px;margin-top: 5px">Odds</h1>
+	<div>Spread: {{winner.team}} ({{spread}})</div>
+	<div>Over/Under: {{overUnder}}</div>
+	<div>
+		<md-button class="md-fab md-mini" ng-click="addToMatchups()">
+			<i class="fa fa-plus" aria-hidden="true"></i>
+			<md-tooltip>add matchup to table</md-tooltip>
+		</md-button>
+	</div>
+	</br>
+	<div>HoopFire.com record: (12-10)</div>
+</section>
+
+<section layout="column" layout-align="center stretch" style="background: white; z-index: 1;" ng-show="matchups.length">
+	<md-card class="md-default" style="background: white;color:black;margin:0">
+		<md-card-header>
+			<md-card-header-text>
+				<div layout="row">
+					<span class="md-title">Matchups</span> 
+				</div> 
+				<span class="md-subhead" style="color:#757575"> to remove a matchup, click its respective action button </span> 
+			</md-card-header-text>
+	   		<md-fab-speed-dial md-direction="left" class="md-scale" ng-cloak>
+	            <md-fab-trigger>
+	                <md-button class="md-fab md-mini">
+	                    <i class="fa fa-search" aria-hidden="true"></i>
+	                    <md-tooltip>search matchups</md-tooltip>
+	                </md-button>
+	            </md-fab-trigger>
+	            <md-fab-actions>
+	                <md-input-container class="md-block md-accent" flex-gt-sm="" ng-click="$event.stopImmediatePropagation()">
+	                    <label style="color:#757575">Search Phrase</label>
+	                    <input ng-model="matchupSearchPhrase" style="color:black;"> </md-input-container>
+	            </md-fab-actions>
+	        </md-fab-speed-dial>
+        </md-card-header>
+		<md-card-content>
+			<md-table-container>
+				<table md-table multiple="false" ng-model="selectedMatchup" md-progress="promise">
+				    <thead md-head md-order="query.order" md-on-reorder="">
+				      	<tr md-row>
+				        	<th md-column  md-order-by="awayTeam"><span>Away Team</span></th>
+				        	<th md-column>Win Chance %</th>
+				        	<th md-column>Score</th>
+				        	<th md-column>Score</th>
+				        	<th md-column>Win Chance %</th>
+				        	<th md-column  md-order-by="homeTeam"><span>Home Team</span></th>
+				        	<th md-column>View Matchup</th>
+				        	<th md-column>Remove</th>
+				      	</tr>
+				    </thead>
+				    <tbody md-body>
+				      	<tr md-row  ng-repeat="m in matchups| limitTo: query.limit : (query.page -1) * query.limit| filter :matchupSearchPhrase">
+				          	<td md-cell>{{m.awayTeam}}</td>
+				           	<td md-cell>{{m.awayWinChance}}</td>
+				           	<td md-cell>{{m.awayScore}}</td>
+				           	<td md-cell>{{m.homeScore}}</td>
+				           	<td md-cell>{{m.homeWinChance}}</td>
+				          	<td md-cell>{{m.homeTeam}}</td>
+				          	<td md-cell width="32px">
+				          		<md-button class="md-fab md-mini md-accent" ng-click="viewMatchup(m)">
+				          			<i class="fa fa-search-plus" aria-hidden="true"></i>
+				          			<md-tooltip>view matchup</md-tooltip>
+				          		</md-button>
+				          	</td>
+				          	<td md-cell>
+				          		<md-button class="md-fab md-mini md-warn" ng-click="removeMatchup(m)">
+				          			<i class="fa fa-minus-circle" aria-hidden="true"></i>
+				          			<md-tooltip>remove matchup</md-tooltip>
+				          		</md-button>
+				          	</td>
+				      	</tr>	
+				    </tbody>
+			  	</table>
+			  	<md-table-pagination class="md-accent" md-limit="query.limit" md-limit-options="[5, 10]" md-page="query.page" md-total="{{matchups.length}}" md-page-select></md-table-pagination>
+		  	</md-table-container>
+	  	</md-card-content>
+	</md-card>
+</section>
+</div>
+
+<footer>
+    <div layout="row" layout-align="center center">
+        <div class="footer">
+        	Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+        	<p> Please note: HoopFire.com does not own any of the team, league or event logos/uniforms depicted within this site, we do not have the power to grant usage rights to anyone. All team and league information, sports logos, sports uniforms and names contained within this site are properties of their respective leagues, teams, ownership groups and/or organizations. Please source any information obtained from this site by providing a link back.</p>
+        </div>
+    </div>
+</footer>

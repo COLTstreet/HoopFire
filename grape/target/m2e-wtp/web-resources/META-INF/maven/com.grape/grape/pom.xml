@@ -1,0 +1,190 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>grape</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.2-SNAPSHOT</version>
+  <name>GrapeWebApp Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    
+    <dependency>
+    	<groupId>com.grape</groupId>
+    	<artifactId>grape-common</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    
+    <!-- spring-context which provides core functionality -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+    	<version>4.2.2.RELEASE</version>
+		</dependency>
+		
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+    	<version>4.2.2.RELEASE</version>
+	</dependency>
+
+	<!-- The spring-aop module provides an AOP Alliance-compliant aspect-oriented 
+		programming implementation allowing you to define -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+    	<version>4.2.2.RELEASE</version>
+	</dependency>
+
+	<!-- The spring-webmvc module (also known as the Web-Servlet module) contains 
+		Spring’s model-view-controller (MVC) and REST Web Services implementation 
+		for web applications -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+    	<version>4.2.2.RELEASE</version>
+	</dependency>
+
+	<!-- The spring-web module provides basic web-oriented integration features 
+		such as multipart file upload functionality and the initialization of the 
+		IoC container using Servlet listeners and a web-oriented application context -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+    	<version>4.2.2.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-orm</artifactId>
+    	<version>4.2.2.RELEASE</version>
+    </dependency>
+
+	<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-core</artifactId>
+    	<version>4.3.7.Final</version>
+    </dependency>
+    
+    <dependency>
+   		<groupId>org.hibernate</groupId>
+   		<artifactId>hibernate-entitymanager</artifactId>
+    	<version>4.3.7.Final</version>
+	</dependency>
+    
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+    	<version>4.2.2.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-jdbc</artifactId>
+    	<version>4.2.2.RELEASE</version>
+	</dependency>
+	
+	<!--MySQL connector -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.36</version>
+	</dependency> 
+	
+	<!-- faster jackson -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+    	<version>2.4.4</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.fasterxml.jackson.datatype</groupId>
+		<artifactId>jackson-datatype-hibernate4</artifactId>
+    	<version>2.4.0</version>
+	</dependency>
+    
+  </dependencies>
+  
+  <parent>
+       <groupId>com.grape</groupId>
+       <artifactId>GrapeParent</artifactId>
+       <version>1.0.0-SNAPSHOT</version>
+       <relativePath>../GrapeParent/pom.xml</relativePath>
+   </parent>
+  
+  <build>
+    <finalName>grape</finalName>
+      <plugins>
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.5.1</version>
+		<configuration>
+			<source>1.7</source>
+			<target>1.7</target>
+		</configuration>
+	</plugin>
+	<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+
+				<configuration>
+					<nonFilteredFileExtensions>
+						<!-- default value contains jpg,jpeg,gif,bmp,png -->
+						<nonFilteredFileExtension>eot</nonFilteredFileExtension>
+						<nonFilteredFileExtension>svg</nonFilteredFileExtension>
+						<nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+						<nonFilteredFileExtension>woff</nonFilteredFileExtension>
+						<nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+					<webResources>
+
+						<resource>
+							<!-- this is relative to the pom.xml directory -->
+							<directory>src/main/webapp/resources</directory>
+							<targetPath>resources</targetPath>
+							<filtering>true</filtering>
+						</resource>
+						<resource>
+							<!-- this is relative to the pom.xml directory -->
+							<directory>src/main/resources/</directory>
+							<targetPath>resources</targetPath>
+							<filtering>true</filtering>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</resource>
+
+						<resource>
+							<!-- this is relative to the pom.xml directory -->
+							<directory>src/main/webapp/WEB-INF</directory>
+							<targetPath>WEB-INF</targetPath>
+							<filtering>true</filtering>
+						</resource>
+					</webResources>
+					<resource>
+						<!-- this is relative to the pom.xml directory -->
+						<directory>src/main/webapp/WEB-INF</directory>
+						<targetPath>WEB-INF</targetPath>
+						<filtering>true</filtering>
+					</resource>
+				</configuration>
+			</plugin>
+	
+	</plugins>
+  </build>
+  
+
+</project>

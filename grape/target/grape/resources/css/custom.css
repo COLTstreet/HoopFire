@@ -1,0 +1,179 @@
+body {
+	max-height: 1200px;
+	font-family: 'Futura', sans-serif;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: #37474F;
+}
+.container:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.3;
+    background-image: url(img/homeBground.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.nbaContainer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: #37474F;
+}
+.nbaContainer:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.3;
+    background-image: url(img/nbaBground.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.container-text {
+	padding: 50px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    color: #fff;
+}
+
+.nbaSubHeader {
+	border-bottom: solid 1px #999a9a;
+}
+
+.title {
+	font-weight: normal;
+	font-size: 6em;
+	margin-bottom: 0;
+}
+
+.subtitle {
+	font-size: 2em;
+	color: #9E9E9E;
+	margin: 0;
+}
+
+.center-div {
+	margin: 0 auto;
+	max-width: 700px;
+}
+
+.left {
+	border-right: solid 1px #999a9a;
+}
+
+.leftContent {
+	padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    background: transparent;
+    color: white;
+}
+
+.logo .img {
+	display: block; 
+	margin: 0 auto;
+}
+
+.rightContent {
+	padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    background: transparent;
+    color: white;
+}
+
+.cardLeft {
+	background: rgba(158,158,158,.9);
+	z-index: 1;
+	overflow: hidden;
+}
+
+.cardRight {
+	background: rgba(158,158,158,.9);
+	z-index: 1;
+	overflow: hidden;
+}
+
+.cardBar {
+	background: rgba(158,158,158,.9);
+	height: 15px;
+}
+
+.parent {
+  overflow: block;
+}
+
+.card img {
+  height: 100%;
+}
+
+.footer {
+    color: #9E9E9E;
+    margin: 5px;
+    font-size: 12px;
+}
+
+.footer a {
+    color: #37474F;
+    text-decoration: none;
+}
+
+.bg-text-right {
+    position: relative;
+}
+.bg-text-right::after {
+    color: rgb(189,189,189);
+    content: attr(data-bg-text-right);
+    display: block;
+    font-size: 170px;
+    line-height: 1;
+    position: absolute;
+    bottom: -200px;
+    right: 10px;
+    opacity: .5;
+}
+
+.bg-text-left {
+    position: relative;
+}
+.bg-text-left::after {
+    color: rgb(189,189,189);
+    content: attr(data-bg-text-left);
+    display: block;
+    font-size: 170px;
+    line-height: 1;
+    position: absolute;
+    bottom: -200px;
+    opacity: .5;
+}
+
+/** Overwrite Material CSS **/
