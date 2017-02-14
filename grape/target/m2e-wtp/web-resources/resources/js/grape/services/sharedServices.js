@@ -18,8 +18,10 @@ sharedServices.factory('sharedUtilService', function() {
 	var avgNcaaPos;
 	var avgNcaaOff;
 	var matchupList = [];
-	var todaysGames = [];
-	var injuriesList = [];
+	var todaysNbaGames = [];
+	var todaysNcaaGames = [];
+	var injuriesList = [];;
+	var ncaaTeamReferenceList = [];
 
 	return {
 
@@ -95,12 +97,20 @@ sharedServices.factory('sharedUtilService', function() {
 			return matchupList;
 		},
 		
-		setTodaysGames : function(objectToSet) {
-			todaysGames = objectToSet;
+		setTodaysNbaGames : function(objectToSet) {
+			todaysNbaGames = objectToSet;
 		},
 
-		getTodaysGames : function() {
-			return todaysGames;
+		getTodaysNbaGames : function() {
+			return todaysNbaGames;
+		},
+		
+		setTodaysNcaaGames : function(objectToSet) {
+			todaysNcaaGames = objectToSet;
+		},
+
+		getTodaysNcaaGames : function() {
+			return todaysNcaaGames;
 		},
 		
 		setInjuriesList : function(objectToSet) {
@@ -109,6 +119,14 @@ sharedServices.factory('sharedUtilService', function() {
 
 		getInjuriesList : function() {
 			return injuriesList;
+		},
+		
+		setNcaaTeamReferenceList : function(objectToSet) {
+			ncaaTeamReferenceList = objectToSet;
+		},
+
+		getNcaaTeamReferenceList : function() {
+			return ncaaTeamReferenceList;
 		}
 
 	}
@@ -131,6 +149,28 @@ sharedServices.factory('grapeRestfulDataService', function($http) {
 		    getNbaScheduleData : function() {
 		    	return $http({
 		              url : 'http://localhost:8080/grape/getNbaScheduleData',
+		              method : 'GET',
+		              paramSerializer : '$httpParamSerializerJQLike',
+		              headers : {
+		              	'Content-Type' : 'application/x-www-form-urlencoded'
+                      }
+                })
+		    },
+		    
+		    getNcaaScheduleData : function() {
+		    	return $http({
+		              url : 'http://localhost:8080/grape/getNcaaScheduleData',
+		              method : 'GET',
+		              paramSerializer : '$httpParamSerializerJQLike',
+		              headers : {
+		              	'Content-Type' : 'application/x-www-form-urlencoded'
+                      }
+                })
+		    },
+		    
+		    getNcaaTeamTableData : function() {
+		    	return $http({
+		              url : 'http://localhost:8080/grape/getNcaaTeamTableData',
 		              method : 'GET',
 		              paramSerializer : '$httpParamSerializerJQLike',
 		              headers : {

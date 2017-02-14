@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.grape.models.NbaInjury;
 import com.grape.models.NbaSchedule;
 import com.grape.models.Nbatable;
+import com.grape.models.NcaaSchedule;
+import com.grape.models.NcaaTeamTable;
 import com.grape.models.Ncaatable;
 import com.grape.service.NbaInjuryService;
 import com.grape.service.NbaScheduleService;
 import com.grape.service.NbaTableService;
+import com.grape.service.NcaaScheduleService;
 import com.grape.service.NcaaTableService;
+import com.grape.service.NcaaTeamTableService;
 
 @Controller
 public class RestController {
@@ -33,7 +37,13 @@ public class RestController {
 	private NbaScheduleService nbaScheduleService; 
 	
 	@Autowired
-	private NbaInjuryService nbaInjuryService; 
+	private NbaInjuryService nbaInjuryService;
+	
+	@Autowired
+	private NcaaTeamTableService ncaaTeamTableService; 
+	
+	@Autowired
+	private NcaaScheduleService ncaaScheduleService;
 	
 	@RequestMapping(value="/getNbaTableData", method=RequestMethod.GET)
 	@ResponseBody 
@@ -83,6 +93,31 @@ public class RestController {
 		return response;
 	}
 	
+	@RequestMapping(value="/getNcaaTeamTableData", method=RequestMethod.GET)
+	@ResponseBody 
+	public Map<String, Object> getNcaaTeamTableData(){
+		
+		Map<String, Object> response = new HashMap<String, Object>();
+		List<NcaaTeamTable> ncaaTeamTable = new ArrayList<NcaaTeamTable>();  
+		String result="";
+		try{
+				
+			ncaaTeamTable = ncaaTeamTableService.getNcaaTeamTableData();
+				result="SUCCESS";
+			}
+			
+			catch(Exception e){
+				System.out.println(e);
+				result="FAILURE";
+			} 
+		
+		response.put("ncaaTeamTable", ncaaTeamTable);
+		response.put("result", result);
+		
+		
+		return response;
+	}
+	
 	@RequestMapping(value="/getNbaViewData", method=RequestMethod.GET)
 	@ResponseBody 
 	public Map<String, Object> getNbaViewData(){
@@ -125,6 +160,30 @@ public class RestController {
 			} 
 		
 		response.put("nbaSchedule", nbaSchedule);
+		response.put("result", result);
+		
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/getNcaaScheduleData", method=RequestMethod.GET)
+	@ResponseBody 
+	public Map<String, Object> getNcaaScheduleData(){
+		
+		Map<String, Object> response = new HashMap<String, Object>();
+		List<NcaaSchedule> ncaaSchedule = new ArrayList<NcaaSchedule>();  
+		String result="";
+		try{
+				
+			ncaaSchedule = ncaaScheduleService.getNcaaScheduleData();
+				result="SUCCESS";
+			}
+			
+			catch(Exception e){
+				result="FAILURE";
+			} 
+		
+		response.put("ncaaSchedule", ncaaSchedule);
 		response.put("result", result);
 		
 		

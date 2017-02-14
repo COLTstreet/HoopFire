@@ -146,9 +146,9 @@ grapeControllers.controller("nbaController", [
 		    	$scope.matchups = sharedUtilService.getMatchupList();
 		    }
 		    
-		    $scope.runTodaysGames = function() {
-		    	for (var i = 0; i < $scope.todaysGames.length; i++) {
-		    		var game = $scope.todaysGames[i];
+		    $scope.runTodaysNbaGames = function() {
+		    	for (var i = 0; i < $scope.todaysNbaGames.length; i++) {
+		    		var game = $scope.todaysNbaGames[i];
 		    		
 		    		for (var j = 0; j < $scope.nbaTeams.length; j++) {
 		    			if(game.awayTeam === $scope.nbaTeams[j].team){
@@ -163,7 +163,7 @@ grapeControllers.controller("nbaController", [
 		    		
 		    		$scope.calculateOdds();
 		    		$scope.addToMatchups(game.time);
-		    		if(i == ($scope.todaysGames.length - 1)){
+		    		if(i == ($scope.todaysNbaGames.length - 1)){
 		    			$scope.selectedAwayTeamChange($scope.selectedAwayTeam);
 		    			$scope.selectedHomeTeamChange($scope.selectedHomeTeam);
 		    		}
@@ -276,17 +276,17 @@ grapeControllers.controller("nbaController", [
 				};
 				
 			$scope.getNbaScheduleData = function(){
-				if(typeof $scope.todaysGames === 'undefined'){
+				if(typeof $scope.todaysNbaGames === 'undefined'){
 					grapeRestfulDataService.getNbaScheduleData() 
 					.success(function(response) {
 						console.log("successfully retrieved nba schedule data "); 
-						$scope.getTodaysGames(response.nbaSchedule);
+						$scope.getTodaysNbaGames(response.nbaSchedule);
 					})
 					.error(function(error) {
 						console.log(error);
 					});
 				} else {
-					$scope.todaysGames = sharedUtilService.getTodaysGames();
+					$scope.todaysNbaGames = sharedUtilService.getTodaysNbaGames();
 				}
 			};
 			
@@ -305,26 +305,25 @@ grapeControllers.controller("nbaController", [
 				}
 			};
 			
-			$scope.getTodaysGames = function(allGames) {
+			$scope.getTodaysNbaGames = function(allGames) {
 				var today = new Date();
 				today.setHours(0,0,0,0);
 				var tomorrow = new Date();
 				tomorrow.setDate(tomorrow.getDate() + 1);
 				tomorrow.setHours(0,0,0,0);
 				
-				$scope.todaysGames = [];
+				$scope.todaysNbaGames = [];
 				
 				for (var i = 0; i < allGames.length; i++) {
 					var game = allGames[i];
 					var gDate = new Date(game.date+'T12:00:00Z');
 					
 					if(today < gDate && tomorrow > gDate) {
-						$scope.todaysGames.push(game);
+						$scope.todaysNbaGames.push(game);
 					}
 				}
 				
-				sharedUtilService.setTodaysGames($scope.todaysGames);
-				console.log(sharedUtilService.getTodaysGames());
+				sharedUtilService.setTodaysNbaGames($scope.todaysNbaGames);
 			};		
 					
 			$scope.showAwayInjuries = function(ev) {

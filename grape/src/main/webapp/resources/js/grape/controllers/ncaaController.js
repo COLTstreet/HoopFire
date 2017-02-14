@@ -114,109 +114,110 @@ grapeControllers.controller("ncaaController", [
 		    }
 		    
 		    $scope.getWinChance = function(spread) {
-		    	if (spread >= 0 && spread < 0.2){
-		    		 winChance = 50
-		    	} else if (spread  >= 0.2 && spread < 0.4) {
-		    		 winChance = 51
-		    	} else if (spread  >= 0.4 && spread < 0.6) {
-		    		 winChance = 52
-		    	} else if (spread  >= 0.6 && spread < 0.8) {
-		    		 winChance = 53
-		    	} else if (spread  >= 0.8 && spread < 1.0) {
-		    		 winChance = 54
+		    	if (spread >= 0 && spread < 0.1){
+		    		 winChance = 50;
+		    	} else if (spread  >= 0.1 && spread < 0.4) {
+		    		 winChance = 51;
+		    	} else if (spread  >= 0.4 && spread < 0.7) {
+		    		 winChance = 52;
+		    	} else if (spread  >= 0.7 && spread < 1) {
+		    		 winChance = 53;
 		    	} else if (spread  >= 1.0 && spread < 1.25) {
-		    		 winChance = 55
-	    		} else if (spread  >= 1.25 && spread < 1.5) {
-		    		 winChance = 56
+		    		 winChance = 54;
+		    	} else if (spread  >= 1.25 && spread < 1.5) {
+		    		 winChance = 55;
 	    		} else if (spread  >= 1.5 && spread < 1.75) {
-		    		 winChance = 57
-		    	} else if (spread  >= 1.75 && spread < 2) {
-		    		 winChance = 58
+		    		 winChance = 56;
+	    		} else if (spread  >= 1.75 && spread < 2) {
+		    		 winChance = 57;
 		    	} else if (spread  >= 2 && spread < 2.25) {
-		    		 winChance = 59
+		    		 winChance = 58;
 		    	} else if (spread  >= 2.25 && spread < 2.5) {
-		    		 winChance = 60
+		    		 winChance = 59;
 		    	} else if (spread  >= 2.5 && spread < 2.75) {
-		    		 winChance = 61
+		    		 winChance = 60;
 		    	} else if (spread  >= 2.75 && spread < 3) {
-		    		 winChance = 62
+		    		 winChance = 61;
 		    	} else if (spread  >= 3 && spread < 3.25) {
-		    		 winChance = 63
+		    		 winChance = 62;
 		    	} else if (spread  >= 3.25 && spread < 3.5) {
-		    		 winChance = 64
+		    		 winChance = 63;
 		    	} else if (spread  >= 3.5 && spread < 3.75) {
-		    		 winChance = 65
+		    		 winChance = 64;
 		    	} else if (spread  >= 3.75 && spread < 4) {
-		    		 winChance = 66
+		    		 winChance = 65;
 		    	} else if (spread  >= 4 && spread < 4.33) {
-		    		 winChance = 67
+		    		 winChance = 66;
 		    	} else if (spread  >= 4.33 && spread < 4.67) {
-		    		 winChance = 68
+		    		 winChance = 67;
 		    	} else if (spread  >= 4.67 && spread < 5) {
-		    		 winChance = 69
+		    		 winChance = 68;
 		    	} else if (spread  >= 5 && spread < 5.33) {
-		    		 winChance = 70
+		    		 winChance = 69
 		    	} else if (spread  >= 5.33 && spread < 5.67) {
-		    		 winChance = 71
+		    		 winChance = 70;
 		    	} else if (spread  >= 5.67 && spread < 6) {
-		    		 winChance = 72
+		    		 winChance = 71;
 		    	} else if (spread  >= 6 && spread < 6.33) {
-		    		 winChance = 73
+		    		 winChance = 72;
 		    	} else if (spread  >= 6.33 && spread < 6.67) {
-		    		 winChance = 74
+		    		 winChance = 73;
 		    	} else if (spread  >= 6.67 && spread < 7) {
-		    		 winChance = 75
+		    		 winChance = 74;
 		    	} else if (spread  >= 7 && spread < 7.33) {
-		    		 winChance = 76
+		    		 winChance = 75;
 		    	} else if (spread  >= 7.33 && spread < 7.67) {
-		    		 winChance = 77
+		    		 winChance = 76;
 		    	} else if (spread  >= 7.67 && spread < 8) {
-		    		 winChance = 78
+		    		 winChance = 77;
 		    	} else if (spread  >= 8 && spread < 8.33) {
-		    		 winChance = 79
+		    		 winChance = 78;
 		    	} else if (spread  >= 8.33 && spread < 8.67) {
-		    		 winChance = 80
+		    		 winChance = 79
 		    	} else if (spread  >= 8.67 && spread < 9) {
-		    		 winChance = 81
+		    		 winChance = 80;
 		    	} else if (spread  >= 9 && spread < 9.5) {
-		    		 winChance = 82
+		    		 winChance = 81;
 		    	} else if (spread  >= 9.5 && spread < 10) {
-		    		 winChance = 83
+		    		 winChance = 82;
 		    	} else if (spread  >= 10 && spread < 10.5) {
-		    		 winChance = 84
+		    		 winChance = 83;
 		    	} else if (spread  >= 10.5 && spread < 11) {
-		    		 winChance = 85
+		    		 winChance = 84;
 		    	} else if (spread  >= 11 && spread < 11.5) {
-		    		 winChance = 86
+		    		 winChance = 85;
 		    	} else if (spread  >= 11.5 && spread < 12) {
-		    		 winChance = 87
+		    		 winChance = 86;
 		    	} else if (spread  >= 12 && spread < 12.5) {
-		    		 winChance = 88
+		    		 winChance = 87;
 		    	} else if (spread  >= 12.5 && spread < 13) {
-		    		 winChance = 89
+		    		 winChance = 88;
 		    	} else if (spread  >= 13 && spread < 14) {
-		    		 winChance = 90
+		    		 winChance = 89;
 		    	} else if (spread  >= 14 && spread < 15) {
-		    		 winChance = 91
+		    		 winChance = 90;
 		    	} else if (spread  >= 15 && spread < 16) {
-		    		 winChance = 92
+		    		 winChance = 91;
 		    	} else if (spread  >= 16 && spread < 17) {
-		    		 winChance = 93
+		    		 winChance = 92;
 		    	} else if (spread  >= 17 && spread < 18) {
-		    		 winChance = 94
+		    		 winChance = 93;
 		    	} else if (spread  >= 18 && spread < 19) {
-		    		 winChance = 95
+		    		 winChance = 94;
 		    	} else if (spread  >= 19 && spread < 20) {
-		    		 winChance = 96
+		    		 winChance = 95;
 		    	} else if (spread  >= 20 && spread < 21) {
-		    		 winChance = 97
+		    		 winChance = 96;
 		    	} else if (spread  >= 21 && spread < 22) {
-		    		 winChance = 98
+		    		 winChance = 97;
 		    	} else if (spread  >= 22 && spread < 23) {
-		    		 winChance = 99
-		    	} else if(spread  >= 23) {
-		    		 winChance = 100
+		    		 winChance = 98;
+		    	} else if(spread  >= 23 && spread < 24) {
+		    		 winChance = 99;
+		    	} else if(spread >=24) {
+		    		winChance = 100;
 		    	}
+		    	
 		    	
 		    	if ($scope.homeScore > $scope.awayScore) {
 		    		$scope.homeWinChance = winChance + "%";
@@ -260,24 +261,37 @@ grapeControllers.controller("ncaaController", [
 		    	$scope.matchups = sharedUtilService.getMatchupList();
 		    }
 		    
-		    $scope.runTodaysGames = function() {
-		    	for (var i = 0; i < $scope.todaysGames.length; i++) {
-		    		var game = $scope.todaysGames[i];
+		    $scope.runTodaysNcaaGames = function() {
+		    	for (var i = 0; i < $scope.todaysNcaaGames.length; i++) {
+		    		var game = $scope.todaysNcaaGames[i];
 		    		
-		    		for (var j = 0; j < $scope.ncaaTeams.length; j++) {
-		    			if(game.awayTeam === $scope.ncaaTeams[j].team){
-		    				$scope.selectedAwayTeam = $scope.ncaaTeams[j];
+		    		var tempAway;
+		    		for (var j = 0; j < $scope.ncaaTeamReferenceList.length; j++) {
+		    			if(game.awayTeam === $scope.ncaaTeamReferenceList[j].scheduleTeamName){
+		    				tempAway = $scope.ncaaTeamReferenceList[j];
 		    			}
 		    		}
-		    		for (var z = 0; z < $scope.ncaaTeams.length; z++) {
-		    			if(game.homeTeam === $scope.ncaaTeams[z].team){
-		    				$scope.selectedHomeTeam = $scope.ncaaTeams[z];
+		    		for (var x = 0; x < $scope.ncaaTeams.length; x++) {
+		    			if(tempAway.kenPomTeamName === $scope.ncaaTeams[x].team){
+		    				$scope.selectedAwayTeam = $scope.ncaaTeams[x];
+		    			}
+		    		}
+		    		
+		    		var tempHome
+		    		for (var z = 0; z < $scope.ncaaTeamReferenceList.length; z++) {
+		    			if(game.homeTeam === $scope.ncaaTeamReferenceList[z].scheduleTeamName){
+		    				tempHome = $scope.ncaaTeamReferenceList[z];
+		    			}
+		    		}
+		    		for (var y = 0; y < $scope.ncaaTeams.length; y++) {
+		    			if(tempHome.kenPomTeamName === $scope.ncaaTeams[y].team){
+		    				$scope.selectedHomeTeam = $scope.ncaaTeams[y];
 		    			}
 		    		}
 		    		
 		    		$scope.calculateOdds();
 		    		$scope.addToMatchups(game.time);
-		    		if(i == ($scope.todaysGames.length - 1)){
+		    		if(i == ($scope.todaysNcaaGames.length - 1)){
 		    			$scope.selectedAwayTeamChange($scope.selectedAwayTeam);
 		    			$scope.selectedHomeTeamChange($scope.selectedHomeTeam);
 		    		}
@@ -390,17 +404,34 @@ grapeControllers.controller("ncaaController", [
 				};
 				
 			$scope.getNcaaScheduleData = function(){
-				if(typeof $scope.todaysGames === 'undefined'){
+				if(typeof $scope.todaysNcaaGames === 'undefined'){
 					grapeRestfulDataService.getNcaaScheduleData() 
 					.success(function(response) {
 						console.log("successfully retrieved ncaa schedule data "); 
-						$scope.getTodaysGames(response.ncaaSchedule);
+						$scope.todaysNcaaGames = response.ncaaSchedule;
+						sharedUtilService.setTodaysNcaaGames($scope.todaysNcaaGames);
 					})
 					.error(function(error) {
 						console.log(error);
 					});
 				} else {
-					$scope.todaysGames = sharedUtilService.getTodaysGames();
+					$scope.todaysNcaaGames = sharedUtilService.getTodaysNcaaGames();
+				}
+			};
+			
+			$scope.getNcaaTeamTableData = function(){
+				if(typeof $scope.todaysNcaaGames === 'undefined'){
+					grapeRestfulDataService.getNcaaTeamTableData() 
+					.success(function(response) {
+						console.log("successfully retrieved ncaa team table data "); 
+						$scope.ncaaTeamReferenceList = response.ncaaTeamTable;
+						sharedUtilService.setNcaaTeamReferenceList($scope.ncaaTeamReferenceList);
+					})
+					.error(function(error) {
+						console.log(error);
+					});
+				} else {
+					$scope.ncaaTeamReferenceList = sharedUtilService.getNcaaTeamReferenceList();
 				}
 			};
 			
@@ -419,27 +450,27 @@ grapeControllers.controller("ncaaController", [
 				}
 			};
 			
-			$scope.getTodaysGames = function(allGames) {
-				var today = new Date();
-				today.setHours(0,0,0,0);
-				var tomorrow = new Date();
-				tomorrow.setDate(tomorrow.getDate() + 1);
-				tomorrow.setHours(0,0,0,0);
-				
-				$scope.todaysGames = [];
-				
-				for (var i = 0; i < allGames.length; i++) {
-					var game = allGames[i];
-					var gDate = new Date(game.date+'T12:00:00Z');
-					
-					if(today < gDate && tomorrow > gDate) {
-						$scope.todaysGames.push(game);
-					}
-				}
-				
-				sharedUtilService.setTodaysGames($scope.todaysGames);
-				console.log(sharedUtilService.getTodaysGames());
-			};		
+//			$scope.getTodaysNcaaGames = function(allGames) {
+//				var today = new Date();
+//				today.setHours(0,0,0,0);
+//				var tomorrow = new Date();
+//				tomorrow.setDate(tomorrow.getDate() + 1);
+//				tomorrow.setHours(0,0,0,0);
+//				
+//				$scope.todaysNcaaGames = [];
+//				
+//				for (var i = 0; i < allGames.length; i++) {
+//					var game = allGames[i];
+//					var gDate = new Date(game.date+'T12:00:00Z');
+//					
+//					if(today < gDate && tomorrow > gDate) {
+//						$scope.todaysNcaaGames.push(game);
+//					}
+//				}
+//				
+//				sharedUtilService.setTodaysNcaaGames($scope.todaysNcaaGames);
+//				console.log(sharedUtilService.getTodaysNcaaGames());
+//			};		
 					
 			$scope.showAwayInjuries = function(ev) {
 				
@@ -527,7 +558,8 @@ grapeControllers.controller("ncaaController", [
 				$scope.isDisabled    = false;
 		
 				$scope.getNcaaTableData();
-//				$scope.getNcaaScheduleData();
+				$scope.getNcaaScheduleData();
+				$scope.getNcaaTeamTableData();
 				$scope.matchups = [];
 				sharedUtilService.setMatchupList($scope.matchups); 
 				
