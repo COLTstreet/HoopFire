@@ -22,17 +22,22 @@ grapeApp.config(function($routeProvider, $locationProvider) {
 	
 	$routeProvider
 	.when('/home', {
-		templateUrl: "/grape/resources/pages/home.html", 
+		templateUrl: "/resources/pages/home.html",
 		controller: "homeController", 
 		reloadOnSearch: false
 	})
 	.when('/nbabb', {
-		templateUrl: "/grape/resources/pages/nba.html", 
+		templateUrl: "/resources/pages/nba.html", 
 		controller: "nbaController", 
 		reloadOnSearch: false
 	})
+	.when('/ncaabb', {
+		templateUrl: "/resources/pages/ncaa.html", 
+		controller: "ncaaController", 
+		reloadOnSearch: false
+	})
 	.otherwise({
-		templateUrl: "/grape/resources/pages/home.html", 
+		templateUrl: "/resources/pages/home.html", 
 		controller: "homeController", 
 		reloadOnSearch: false
 	})

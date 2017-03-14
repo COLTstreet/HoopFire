@@ -1,4 +1,4 @@
-<div ng-include="'resources/pages/common/main.html'" ng-controller="navController" onload="setActivePage('home')"></div>
+<div ng-include="'/resources/pages/common/main.html'" ng-controller="navController" onload="setActivePage('home')"></div>
 
 <section layout="column" layout-align="center stretch" style="height: 100%"> 
 	<div class="container">
@@ -6,17 +6,12 @@
 		    <picture>
 				<source media="(min-width: 800px)"
 			          sizes="80vw"
-			          srcset="resources/css/img/hoopfire_logo_lg_wh.png">
-				<img src="resources/css/img/fire_logo.png" alt="lighthouse"
+			          srcset="/resources/css/img/hoopfire_logo_lg_wh.png">
+				<img src="/resources/css/img/fire_logo.png" alt="lighthouse"
 			       sizes="80vw"
-			       srcset="resources/css/img/fire_logo.png">
+			       srcset="/resources/css/img/fire_logo.png">
 			</picture>
-			<p class="subtitle">You pick the game, We'll pick the winner</p>
-	    </div>
-	    <div layout="column" layout-align="center center">
-	    	<md-button class="md-fab md-accent" ng-click="navigateToPage('nbabb')" aria-label="Use Android">
-	    		<md-icon md-svg-src="resources/css/img/basketball.svg"></md-icon>
-	    	</md-button>
+			<p class="subtitle">You pick the game. We'll pick the winner</p>
 	    </div>
 	</div>
 </section>

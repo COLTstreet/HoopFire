@@ -57,6 +57,33 @@ body {
     background-size: cover;
 }
 
+.ncaaContainer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: #37474F;
+}
+.ncaaContainer:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.3;
+    background-image: url(img/nbaBground.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
 .container-text {
 	padding: 50px;
     text-align: center;
@@ -174,6 +201,10 @@ body {
     position: absolute;
     bottom: -200px;
     opacity: .5;
+}
+
+.subHeader {
+	background: #303030;
 }
 
 /** Overwrite Material CSS **/

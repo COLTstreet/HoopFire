@@ -12,10 +12,16 @@ sharedServices.factory('sharedUtilService', function() {
 	var homeTeam;
 	var awayTeam;
 	var nbaTable;
+	var ncaaTable;
 	var avgPos;
 	var avgOff;
+	var avgNcaaPos;
+	var avgNcaaOff;
 	var matchupList = [];
-	var todaysGames = [];
+	var todaysNbaGames = [];
+	var todaysNcaaGames = [];
+	var injuriesList = [];;
+	var ncaaTeamReferenceList = [];
 
 	return {
 
@@ -25,6 +31,14 @@ sharedServices.factory('sharedUtilService', function() {
 
 		getNbaTable : function() {
 			return nbaTable;
+		},
+		
+		setNcaaTable : function(objectToSet) {
+			ncaaTable = objectToSet;
+		},
+
+		getNcaaTable : function() {
+			return ncaaTable;
 		},
 		
 		setHomeTeam : function(objectToSet) {
@@ -59,6 +73,22 @@ sharedServices.factory('sharedUtilService', function() {
 			return avgOff;
 		},
 		
+		setAvgNcaaPoss : function(objectToSet) {
+			avgNcaaPos = objectToSet;
+		},
+
+		getAvgNcaaPoss : function() {
+			return avgNcaaPos;
+		},
+		
+		setAvgNcaaOff : function(objectToSet) {
+			avgNcaaOff = objectToSet;
+		},
+
+		getAvgNcaaOff : function() {
+			return avgNcaaOff;
+		},
+		
 		setMatchupList : function(objectToSet) {
 			matchupList = objectToSet;
 		},
@@ -67,12 +97,36 @@ sharedServices.factory('sharedUtilService', function() {
 			return matchupList;
 		},
 		
-		setTodaysGames : function(objectToSet) {
-			todaysGames = objectToSet;
+		setTodaysNbaGames : function(objectToSet) {
+			todaysNbaGames = objectToSet;
 		},
 
-		getTodaysGames : function() {
-			return todaysGames;
+		getTodaysNbaGames : function() {
+			return todaysNbaGames;
+		},
+		
+		setTodaysNcaaGames : function(objectToSet) {
+			todaysNcaaGames = objectToSet;
+		},
+
+		getTodaysNcaaGames : function() {
+			return todaysNcaaGames;
+		},
+		
+		setInjuriesList : function(objectToSet) {
+			injuriesList = objectToSet;
+		},
+
+		getInjuriesList : function() {
+			return injuriesList;
+		},
+		
+		setNcaaTeamReferenceList : function(objectToSet) {
+			ncaaTeamReferenceList = objectToSet;
+		},
+
+		getNcaaTeamReferenceList : function() {
+			return ncaaTeamReferenceList;
 		}
 
 	}
@@ -83,25 +137,69 @@ sharedServices.factory('grapeRestfulDataService', function($http) {
     var factory = {
     		getNbaTableData : function() {
                   return $http({
-                        url : 'http://localhost:8080/grape/getNbaTableData',
+                        url : 'https://hoopfire.herokuapp.com/getNbaTableData',
                         method : 'GET',
                         paramSerializer : '$httpParamSerializerJQLike',
                         headers : {
                         	'Content-Type' : 'application/x-www-form-urlencoded'
                         }
                   })
-           },
+    		},
     
 		    getNbaScheduleData : function() {
 		    	return $http({
-		              url : 'http://localhost:8080/grape/getNbaScheduleData',
+		              url : 'https://hoopfire.herokuapp.com/getNbaScheduleData',
 		              method : 'GET',
 		              paramSerializer : '$httpParamSerializerJQLike',
 		              headers : {
 		              	'Content-Type' : 'application/x-www-form-urlencoded'
                       }
                 })
-         }
+		    },
+		    
+		    getNcaaScheduleData : function() {
+		    	return $http({
+		              url : 'https://hoopfire.herokuapp.com/getNcaaScheduleData',
+		              method : 'GET',
+		              paramSerializer : '$httpParamSerializerJQLike',
+		              headers : {
+		              	'Content-Type' : 'application/x-www-form-urlencoded'
+                      }
+                })
+		    },
+		    
+		    getNcaaTeamTableData : function() {
+		    	return $http({
+		              url : 'https://hoopfire.herokuapp.com/getNcaaTeamTableData',
+		              method : 'GET',
+		              paramSerializer : '$httpParamSerializerJQLike',
+		              headers : {
+		              	'Content-Type' : 'application/x-www-form-urlencoded'
+                      }
+                })
+		    },
+		    
+		    getNbaInjuries : function() {
+                return $http({
+                      url : 'https://hoopfire.herokuapp.com/getNbaInjuries',
+                      method : 'GET',
+                      paramSerializer : '$httpParamSerializerJQLike',
+                      headers : {
+                      	'Content-Type' : 'application/x-www-form-urlencoded'
+                      }
+                })
+		    },
+		    
+		    getNcaaTableData : function() {
+                return $http({
+                      url : 'https://hoopfire.herokuapp.com/getNcaaTableData',
+                      method : 'GET',
+                      paramSerializer : '$httpParamSerializerJQLike',
+                      headers : {
+                      	'Content-Type' : 'application/x-www-form-urlencoded'
+                      }
+                })
+		    }
     };
 
     return factory;

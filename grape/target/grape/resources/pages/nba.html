@@ -1,10 +1,10 @@
-<div ng-include="'resources/pages/common/main.html'" ng-controller="navController" onload="setActivePage('nbabb')"></div>
+<div ng-include="'/resources/pages/common/main.html'" ng-controller="navController" onload="setActivePage('nbabb')"></div>
 
 
 
 <div layout="column" layout-align="stretch"  style="height: 1200px" class="nbaContainer" id="container" >
 
-<div class="nbaSubHeader" layout="column" layout-align="center end">
+<div class="subHeader" layout="column" layout-align="center end">
 	<md-fab-speed-dial md-direction="left" class="md-scale" ng-cloak>
     	<md-fab-trigger>
       		<md-button aria-label="Schedule" class="md-fab md-accent md-mini">
@@ -14,7 +14,7 @@
     	</md-fab-trigger>
 
     	<md-fab-actions>
-      		<md-button aria-label="Schedule" class="md-fab md-raised md-mini" ng-click="runTodaysGames()">
+      		<md-button aria-label="Schedule" class="md-fab md-raised md-mini" ng-click="runTodaysNbaGames()">
         		<i class="fa fa-calendar" aria-hidden="true"></i>
 				<md-tooltip>todays matchups</md-tooltip>
       		</md-button>
@@ -63,7 +63,7 @@
          			<md-card-title-media>
            				<div id="logo" layout="row" layout-align="center stretch" style="width: 100%;">
 	           				<div class="md-media-md card-media" style="width: 100%;">
-	           					<img alt="Away Team" src="resources/css/img/{{selectedAwayTeam.team}}.png">
+	           					<img alt="Away Team" src="/resources/css/img/{{selectedAwayTeam.team}}.png">
 	           				</div>
            				</div>
          			</md-card-title-media>
@@ -71,7 +71,7 @@
          	<div layout="column" layout-align="center stretch" style="font-size: 3em;padding-right: 3%;text-align: right;">{{awayScore}}
          	</div>
        		<md-card-actions layout="row" layout-align="center center">
-         			<md-button ng-click="showInjuries($event)" style="background:#abacac;">Injuries</md-button>
+         			<md-button ng-click="showAwayInjuries($event)" style="background:#abacac;">Injuries</md-button>
        		</md-card-actions>
 <!--        		<div id="cardLeft" class="cardBar"></div> -->
      	</md-card>
@@ -106,7 +106,7 @@
          			<md-card-title-media>
            				<div layout="row" layout-align="center stretch" style="width: 100%;"">
 	           				<div class="md-media-md card-media">
-	           					<img alt="Home Team" src="resources/css/img/{{selectedHomeTeam.team}}.png">
+	           					<img alt="Home Team" src="/resources/css/img/{{selectedHomeTeam.team}}.png">
 	           				</div>
 	           				
            				</div>
@@ -118,7 +118,7 @@
        		</md-card-title>
          	<div layout="column" layout-align="center stretch" style="font-size: 3em;padding-left: 3%;">{{homeScore}}</div>
        		<md-card-actions layout="row" layout-align="center center">
-         			<md-button ng-click="showInjuries($event)" style="background:#abacac;">Injuries</md-button>
+         			<md-button ng-click="showHomeInjuries($event)" style="background:#abacac;">Injuries</md-button>
        		</md-card-actions>
 <!--        		<div id="cardRight" class="cardBar"></div> -->
      	</md-card>
@@ -169,22 +169,25 @@
 				      	<tr md-row>
 				        	<th md-column  md-order-by="awayTeam"><span>Away Team</span></th>
 				        	<th md-column>Win Chance %</th>
-				        	<th md-column>Score</th>
-				        	<th md-column>Score</th>
-				        	<th md-column>Win Chance %</th>
-				        	<th md-column  md-order-by="homeTeam"><span>Home Team</span></th>
+				        	<th md-column style="background: rgba(0, 188, 212, 0.2);text-align: center;">Spread</th>
+				        	<th md-column style="background: rgba(0, 188, 212, 0.2);text-align: center;">Total Points</th>
+				        	<th md-column style="text-align: right;">Win Chance %</th>
+				        	<th md-column  md-order-by="homeTeam" style="text-align: right;"><span>Home Team</span></th>
+				        	<th md-column style="text-align: center;">Game Time<md-tooltip>All times are in Eastern Time</md-tooltip></th>
+				          			
 				        	<th md-column>View Matchup</th>
 				        	<th md-column>Remove</th>
 				      	</tr>
 				    </thead>
 				    <tbody md-body>
 				      	<tr md-row  ng-repeat="m in matchups| limitTo: query.limit : (query.page -1) * query.limit| filter :matchupSearchPhrase">
-				          	<td md-cell>{{m.awayTeam}}</td>
+				          	<td md-cell width="20%">{{m.awayTeam}}</td>
 				           	<td md-cell>{{m.awayWinChance}}</td>
-				           	<td md-cell>{{m.awayScore}}</td>
-				           	<td md-cell>{{m.homeScore}}</td>
-				           	<td md-cell>{{m.homeWinChance}}</td>
-				          	<td md-cell>{{m.homeTeam}}</td>
+				           	<td md-cell width="30%" style="background: rgba(0, 188, 212, 0.2);text-align: center;">{{m.spread}}</td>
+				           	<td md-cell style="background: rgba(0, 188, 212, 0.2);text-align: center;">{{m.totalScore}}</td>
+				           	<td md-cell style="text-align: right;">{{m.homeWinChance}}</td>
+				          	<td md-cell width="20%" style="text-align: right;">{{m.homeTeam}}</td>
+				          	<td md-cell style="text-align: center;">{{m.time}}</td>
 				          	<td md-cell width="32px">
 				          		<md-button class="md-fab md-mini md-accent" ng-click="viewMatchup(m)">
 				          			<i class="fa fa-search-plus" aria-hidden="true"></i>

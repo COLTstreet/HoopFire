@@ -137,7 +137,7 @@ sharedServices.factory('grapeRestfulDataService', function($http) {
     var factory = {
     		getNbaTableData : function() {
                   return $http({
-                        url : 'http://localhost:8080/grape/getNbaTableData',
+                        url : 'https://hoopfire.herokuapp.com/getNbaTableData',
                         method : 'GET',
                         paramSerializer : '$httpParamSerializerJQLike',
                         headers : {
@@ -148,7 +148,7 @@ sharedServices.factory('grapeRestfulDataService', function($http) {
     
 		    getNbaScheduleData : function() {
 		    	return $http({
-		              url : 'http://localhost:8080/grape/getNbaScheduleData',
+		              url : 'https://hoopfire.herokuapp.com/getNbaScheduleData',
 		              method : 'GET',
 		              paramSerializer : '$httpParamSerializerJQLike',
 		              headers : {
@@ -159,7 +159,7 @@ sharedServices.factory('grapeRestfulDataService', function($http) {
 		    
 		    getNcaaScheduleData : function() {
 		    	return $http({
-		              url : 'http://localhost:8080/grape/getNcaaScheduleData',
+		              url : 'https://hoopfire.herokuapp.com/getNcaaScheduleData',
 		              method : 'GET',
 		              paramSerializer : '$httpParamSerializerJQLike',
 		              headers : {
@@ -170,7 +170,7 @@ sharedServices.factory('grapeRestfulDataService', function($http) {
 		    
 		    getNcaaTeamTableData : function() {
 		    	return $http({
-		              url : 'http://localhost:8080/grape/getNcaaTeamTableData',
+		              url : 'https://hoopfire.herokuapp.com/getNcaaTeamTableData',
 		              method : 'GET',
 		              paramSerializer : '$httpParamSerializerJQLike',
 		              headers : {
@@ -181,7 +181,7 @@ sharedServices.factory('grapeRestfulDataService', function($http) {
 		    
 		    getNbaInjuries : function() {
                 return $http({
-                      url : 'http://localhost:8080/grape/getNbaInjuries',
+                      url : 'https://hoopfire.herokuapp.com/getNbaInjuries',
                       method : 'GET',
                       paramSerializer : '$httpParamSerializerJQLike',
                       headers : {
@@ -192,7 +192,7 @@ sharedServices.factory('grapeRestfulDataService', function($http) {
 		    
 		    getNcaaTableData : function() {
                 return $http({
-                      url : 'http://localhost:8080/grape/getNcaaTableData',
+                      url : 'https://hoopfire.herokuapp.com/getNcaaTableData',
                       method : 'GET',
                       paramSerializer : '$httpParamSerializerJQLike',
                       headers : {
