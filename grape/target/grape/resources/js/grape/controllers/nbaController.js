@@ -296,12 +296,14 @@ grapeControllers.controller("nbaController", [
 					.success(function(response) {
 						console.log("successfully retrieved nba injuries data "); 
 						$scope.injuriesList = response.nbaInjuries;
+						$scope.loading = false;
 					})
 					.error(function(error) {
 						console.log(error);
 					});
 				} else {
 					$scope.injuriesList = sharedUtilService.getNbaInjuries();
+					$scope.loading = false;
 				}
 			};
 			
@@ -331,7 +333,7 @@ grapeControllers.controller("nbaController", [
 			    $mdDialog.show({
 				  locals:{injuries: $scope.injuriesList, teamName: $scope.selectedAwayTeam.team},
 			      controller: DialogController,
-			      templateUrl: 'resources/pages/common/injuries.html',
+			      templateUrl: '/resources/pages/common/injuries.html',
 			      parent: angular.element(document.body),
 			      targetEvent: ev,
 			      clickOutsideToClose: true
@@ -349,7 +351,7 @@ grapeControllers.controller("nbaController", [
 				    $mdDialog.show({
 					  locals:{injuries: $scope.injuriesList, teamName: $scope.selectedHomeTeam.team},
 				      controller: DialogController,
-				      templateUrl: 'resources/pages/common/injuries.html',
+				      templateUrl: '/resources/pages/common/injuries.html',
 				      parent: angular.element(document.body),
 				      targetEvent: ev,
 				      clickOutsideToClose: true
@@ -406,6 +408,7 @@ grapeControllers.controller("nbaController", [
 				if (angular.isDefined($scope.dataReload)) {
 					$interval.cancel($scope.dataReload);
 				};
+				$scope.loading = true;
 				
 				
 				$scope.simulateQuery = false;

@@ -51,6 +51,12 @@
 <script src="/resources/js/grape/controllers/navController.js"></script>
 <script src="/resources/js/grape/controllers/nbaController.js"></script>
 <script src="/resources/js/grape/controllers/ncaaController.js"></script>
+<script src="/resources/js/grape/controllers/marchController.js"></script>
+<script src="/resources/js/grape/controllers/marchWestController.js"></script>
+<script src="/resources/js/grape/controllers/marchEastController.js"></script>
+<script src="/resources/js/grape/controllers/marchSouthController.js"></script>
+<script src="/resources/js/grape/controllers/marchMidwestController.js"></script>
+<script src="/resources/js/grape/controllers/finalFourController.js"></script>
 <script src="/resources/js/grape/services/alertservice.js"></script>
 <script src="/resources/js/grape/services/sharedServices.js"></script>
 <script src="/resources/js/grape/app/grape-app.js"></script>

@@ -1,0 +1,113 @@
+<md-content id="content">
+	<main>
+		<ul class="round round-1">
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setSecondRoundTeamOne(oneSeedWest)">{{oneSeedWest.rank}} {{oneSeedWest.team}}<span>{{firstRoundOneTwo.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setSecondRoundTeamOne(sixteenSeedWest)">{{sixteenSeedWest.rank}} {{sixteenSeedWest.team}}<span>{{firstRoundOneTwo.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setSecondRoundTeamTwo(eightSeedWest)">{{eightSeedWest.rank}} {{eightSeedWest.team}}<span>{{firstRoundThreeFour.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setSecondRoundTeamTwo(nineSeedWest)">{{nineSeedWest.rank}} {{nineSeedWest.team}}<span>{{firstRoundThreeFour.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setSecondRoundTeamThree(fiveSeedWest)">{{fiveSeedWest.rank}} {{fiveSeedWest.team}}<span>{{firstRoundFiveSix.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom" ng-click="setSecondRoundTeamThree(twelveSeedWest)">{{twelveSeedWest.rank}} {{twelveSeedWest.team}}<span>{{firstRoundFiveSix.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setSecondRoundTeamFour(fourSeedWest)">{{fourSeedWest.rank}} {{fourSeedWest.team}}<span>{{firstRoundSevenEight.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setSecondRoundTeamFour(thirteenSeedWest)">{{thirteenSeedWest.rank}} {{thirteenSeedWest.team}}<span>{{firstRoundSevenEight.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setSecondRoundTeamFive(sixSeedWest)">{{sixSeedWest.rank}} {{sixSeedWest.team}}<span>{{firstRoundNineTen.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setSecondRoundTeamFive(elevenSeedWest)">{{elevenSeedWest.rank}} {{elevenSeedWest.team}}<span>{{firstRoundNineTen.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setSecondRoundTeamSix(threeSeedWest)">{{threeSeedWest.rank}} {{threeSeedWest.team}}<span>{{firstRoundElevenTwelve.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setSecondRoundTeamSix(fourteenSeedWest)">{{fourteenSeedWest.rank}} {{fourteenSeedWest.team}}<span>{{firstRoundElevenTwelve.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setSecondRoundTeamSeven(sevenSeedWest)">{{sevenSeedWest.rank}} {{sevenSeedWest.team}}<span>{{firstRoundThirteenFourteen.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setSecondRoundTeamSeven(tenSeedWest)">{{tenSeedWest.rank}} {{tenSeedWest.team}}<span>{{firstRoundThirteenFourteen.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setSecondRoundTeamEight(twoSeedWest)">{{twoSeedWest.rank}} {{twoSeedWest.team}}<span>{{firstRoundFifteenSixteen.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setSecondRoundTeamEight(fifteenSeedWest)">{{fifteenSeedWest.rank}} {{fifteenSeedWest.team}}<span>{{firstRoundFifteenSixteen.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+		</ul>
+		<ul class="round round-2">
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setThirdRoundTeamOne(secondRoundTeamOne)">{{secondRoundTeamOne.rank}} {{secondRoundTeamOne.team}} <span>{{secondRoundOneTwo.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setThirdRoundTeamOne(secondRoundTeamTwo)">{{secondRoundTeamTwo.rank}} {{secondRoundTeamTwo.team}} <span>{{secondRoundOneTwo.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setThirdRoundTeamTwo(secondRoundTeamThree)">{{secondRoundTeamThree.rank}} {{secondRoundTeamThree.team}} <span>{{secondRoundThreeFour.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setThirdRoundTeamTwo(secondRoundTeamFour)">{{secondRoundTeamFour.rank}} {{secondRoundTeamFour.team}} <span>{{secondRoundThreeFour.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top " ng-click="setThirdRoundTeamThree(secondRoundTeamFive)">{{secondRoundTeamFive.rank}} {{secondRoundTeamFive.team}} <span>{{secondRoundFiveSix.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom" ng-click="setThirdRoundTeamThree(secondRoundTeamSix)">{{secondRoundTeamSix.rank}} {{secondRoundTeamSix.team}} <span>{{secondRoundFiveSix.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top " ng-click="setThirdRoundTeamFour(secondRoundTeamSeven)">{{secondRoundTeamSeven.rank}} {{secondRoundTeamSeven.team}} <span>{{secondRoundSevenEight.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom" ng-click="setThirdRoundTeamFour(secondRoundTeamEight)">{{secondRoundTeamEight.rank}} {{secondRoundTeamEight.team}} <span>{{secondRoundSevenEight.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+		</ul>
+		<ul class="round round-3">
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setFourthRoundTeamOne(thirdRoundTeamOne)">{{thirdRoundTeamOne.rank}} {{thirdRoundTeamOne.team}} <span>{{thirdRoundOneTwo.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setFourthRoundTeamOne(thirdRoundTeamTwo)">{{thirdRoundTeamTwo.rank}} {{thirdRoundTeamTwo.team}} <span>{{thirdRoundOneTwo.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setFourthRoundTeamTwo(thirdRoundTeamThree)">{{thirdRoundTeamThree.rank}} {{thirdRoundTeamThree.team}} <span>{{thirdRoundThreeFour.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom" ng-click="setFourthRoundTeamTwo(thirdRoundTeamFour)">{{thirdRoundTeamFour.rank}} {{thirdRoundTeamFour.team}} <span>{{thirdRoundThreeFour.awayScore}}</span></li>
+	
+			<li class="spacer">&nbsp;</li>
+		</ul>
+		<ul class="round round-4">
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top" ng-click="setFifthRoundTeamOne(fourthRoundTeamOne)">{{fourthRoundTeamOne.rank}} {{fourthRoundTeamOne.team}} <span>{{fourthRoundOneTwo.homeScore}}</span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom " ng-click="setFifthRoundTeamOne(fourthRoundTeamTwo)">{{fourthRoundTeamTwo.rank}} {{fourthRoundTeamTwo.team}} <span>{{fourthRoundOneTwo.awayScore}}</span></li>
+			
+			<li class="spacer">&nbsp;</li>
+		</ul>
+		<ul class="round round-5">
+			<li class="spacer">&nbsp;</li>
+			
+			<li class="game game-top">{{fifthRoundTeamOne.rank}} {{fifthRoundTeamOne.team}}</li>
+
+			<li class="spacer">&nbsp;</li>
+		</ul>		
+	</main>
+</md-content>

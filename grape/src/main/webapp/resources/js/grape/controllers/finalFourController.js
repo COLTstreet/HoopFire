@@ -1,0 +1,381 @@
+/**
+ * 
+ */
+grapeControllers.controller("finalFourController", [
+		'$scope',
+		'$http',
+		'$routeParams',
+		'$rootScope',
+		'$location',
+		'$interval',
+		'$window',
+		'alertService',
+		'$cookieStore',
+		'$mdDialog',
+		'sharedUtilService',
+		'grapeRestfulDataService',
+		function($scope, $http, $routeParams, $rootScope, $location, $interval, $window,
+				alertService, $cookieStore, $mdDialog, sharedUtilService, grapeRestfulDataService) {
+
+			console.log("initiating west controller...");
+
+		    // ******************************
+		    // Internal methods
+		    // ******************************
+		    
+		    $scope.calculateOdds = function(){
+				var adjHomeOff = $scope.selectedHomeTeam.adjO;
+				var adjHomeDef = $scope.selectedHomeTeam.adjD;
+
+				var adjAwayOff = $scope.selectedAwayTeam.adjO;;
+				var adjAwayDef = $scope.selectedAwayTeam.adjD;
+				
+				var pythExp = 10.25;
+				var adjHomePyth = Math.pow(adjHomeOff, pythExp) / (Math.pow(adjHomeOff, pythExp) + Math.pow(adjHomeDef, pythExp));
+				var adjAwayPyth = Math.pow(adjAwayOff, pythExp) / (Math.pow(adjAwayOff, pythExp) + Math.pow(adjAwayDef, pythExp));
+				
+				var adjPos = (($scope.selectedAwayTeam.adjT / $scope.avgPos) * ($scope.selectedHomeTeam.adjT / $scope.avgPos)) * $scope.avgPos;
+				
+				var awayScoreD = (((adjAwayOff / $scope.avgOff) * (adjHomeDef / $scope.avgOff)) * ($scope.avgOff) * (adjPos / 100));
+				$scope.awayScore = awayScoreD.toFixed(0);
+				var homeScoreD = (((adjHomeOff / $scope.avgOff) * (adjAwayDef / $scope.avgOff)) * ($scope.avgOff) * (adjPos / 100));
+				$scope.homeScore = homeScoreD.toFixed(0);
+				$scope.homeScore = Number($scope.homeScore);
+				
+				var decSpread = Math.abs(awayScoreD - (homeScoreD));
+				
+				if ($scope.homeScore > $scope.awayScore) {
+					$scope.spread = "-" + (Math.round(decSpread * 2) / 2).toFixed(1);
+					$scope.winner = $scope.selectedHomeTeam;
+				} else {
+					$scope.spread = "-" + (Math.round(decSpread * 2) / 2).toFixed(1);
+					$scope.winner = $scope.selectedAwayTeam;
+				}
+
+				$scope.overUnder = (awayScoreD + (homeScoreD)).toFixed(2);
+				$scope.getWinChance(decSpread);
+
+		    }
+		    
+		    $scope.getWinChance = function(spread) {
+		    	if (spread >= 0 && spread < 0.1){
+		    		 winChance = 50;
+		    	} else if (spread  >= 0.1 && spread < 0.4) {
+		    		 winChance = 51;
+		    	} else if (spread  >= 0.4 && spread < 0.7) {
+		    		 winChance = 52;
+		    	} else if (spread  >= 0.7 && spread < 1) {
+		    		 winChance = 53;
+		    	} else if (spread  >= 1.0 && spread < 1.25) {
+		    		 winChance = 54;
+		    	} else if (spread  >= 1.25 && spread < 1.5) {
+		    		 winChance = 55;
+	    		} else if (spread  >= 1.5 && spread < 1.75) {
+		    		 winChance = 56;
+	    		} else if (spread  >= 1.75 && spread < 2) {
+		    		 winChance = 57;
+		    	} else if (spread  >= 2 && spread < 2.25) {
+		    		 winChance = 58;
+		    	} else if (spread  >= 2.25 && spread < 2.5) {
+		    		 winChance = 59;
+		    	} else if (spread  >= 2.5 && spread < 2.75) {
+		    		 winChance = 60;
+		    	} else if (spread  >= 2.75 && spread < 3) {
+		    		 winChance = 61;
+		    	} else if (spread  >= 3 && spread < 3.25) {
+		    		 winChance = 62;
+		    	} else if (spread  >= 3.25 && spread < 3.5) {
+		    		 winChance = 63;
+		    	} else if (spread  >= 3.5 && spread < 3.75) {
+		    		 winChance = 64;
+		    	} else if (spread  >= 3.75 && spread < 4) {
+		    		 winChance = 65;
+		    	} else if (spread  >= 4 && spread < 4.33) {
+		    		 winChance = 66;
+		    	} else if (spread  >= 4.33 && spread < 4.67) {
+		    		 winChance = 67;
+		    	} else if (spread  >= 4.67 && spread < 5) {
+		    		 winChance = 68;
+		    	} else if (spread  >= 5 && spread < 5.33) {
+		    		 winChance = 69
+		    	} else if (spread  >= 5.33 && spread < 5.67) {
+		    		 winChance = 70;
+		    	} else if (spread  >= 5.67 && spread < 6) {
+		    		 winChance = 71;
+		    	} else if (spread  >= 6 && spread < 6.33) {
+		    		 winChance = 72;
+		    	} else if (spread  >= 6.33 && spread < 6.67) {
+		    		 winChance = 73;
+		    	} else if (spread  >= 6.67 && spread < 7) {
+		    		 winChance = 74;
+		    	} else if (spread  >= 7 && spread < 7.33) {
+		    		 winChance = 75;
+		    	} else if (spread  >= 7.33 && spread < 7.67) {
+		    		 winChance = 76;
+		    	} else if (spread  >= 7.67 && spread < 8) {
+		    		 winChance = 77;
+		    	} else if (spread  >= 8 && spread < 8.33) {
+		    		 winChance = 78;
+		    	} else if (spread  >= 8.33 && spread < 8.67) {
+		    		 winChance = 79
+		    	} else if (spread  >= 8.67 && spread < 9) {
+		    		 winChance = 80;
+		    	} else if (spread  >= 9 && spread < 9.5) {
+		    		 winChance = 81;
+		    	} else if (spread  >= 9.5 && spread < 10) {
+		    		 winChance = 82;
+		    	} else if (spread  >= 10 && spread < 10.5) {
+		    		 winChance = 83;
+		    	} else if (spread  >= 10.5 && spread < 11) {
+		    		 winChance = 84;
+		    	} else if (spread  >= 11 && spread < 11.5) {
+		    		 winChance = 85;
+		    	} else if (spread  >= 11.5 && spread < 12) {
+		    		 winChance = 86;
+		    	} else if (spread  >= 12 && spread < 12.5) {
+		    		 winChance = 87;
+		    	} else if (spread  >= 12.5 && spread < 13) {
+		    		 winChance = 88;
+		    	} else if (spread  >= 13 && spread < 14) {
+		    		 winChance = 89;
+		    	} else if (spread  >= 14 && spread < 15) {
+		    		 winChance = 90;
+		    	} else if (spread  >= 15 && spread < 16) {
+		    		 winChance = 91;
+		    	} else if (spread  >= 16 && spread < 17) {
+		    		 winChance = 92;
+		    	} else if (spread  >= 17 && spread < 18) {
+		    		 winChance = 93;
+		    	} else if (spread  >= 18 && spread < 19) {
+		    		 winChance = 94;
+		    	} else if (spread  >= 19 && spread < 20) {
+		    		 winChance = 95;
+		    	} else if (spread  >= 20 && spread < 21) {
+		    		 winChance = 96;
+		    	} else if (spread  >= 21 && spread < 22) {
+		    		 winChance = 97;
+		    	} else if (spread  >= 22 && spread < 23) {
+		    		 winChance = 98;
+		    	} else if(spread  >= 23 && spread < 24) {
+		    		 winChance = 99;
+		    	} else if(spread >=24) {
+		    		winChance = 100;
+		    	}
+		    	
+		    	
+		    	if ($scope.homeScore > $scope.awayScore) {
+		    		$scope.homeWinChance = winChance + "%";
+		    		$scope.awayWinChance = (100 - winChance) + "%";;
+		    	} else {
+		    		$scope.awayWinChance = winChance + "%";
+		    		$scope.homeWinChance = (100 - winChance) + "%";;
+		    	}
+		    	
+		    }
+		    
+		    $scope.calculateAverages = function() {
+		    	if(sharedUtilService.getAvgNcaaPoss() == null || sharedUtilService.getAvgNcaaOff() == null){
+		    		var avgPosSum = 0;
+			    	var avgOffSum = 0;
+				    for (var i = 0; i < $scope.ncaaTeams.length; i++) {
+					    var team = $scope.ncaaTeams[i];
+					    avgPosSum += team.adjT;
+					    avgOffSum += team.adjO;
+					}
+			    	
+			    	$scope.avgPos = avgPosSum / $scope.ncaaTeams.length;
+			    	$scope.avgOff = avgOffSum / $scope.ncaaTeams.length;
+			    	
+			    	$scope.showOdds = false;
+			    	
+			    	sharedUtilService.setAvgNcaaPoss($scope.avgPos);
+			    	sharedUtilService.setAvgNcaaOff($scope.avgOff);
+		    	} else {
+		    		$scope.avgPos = sharedUtilService.getAvgNcaaPoss();
+			    	$scope.avgOff = sharedUtilService.getAvgNcaaOff();
+		    	}
+		    	
+			      
+		    };
+
+			//page nagivator
+			$scope.navigateToPage = function(page) {
+				
+				$location.path('/' + page);
+			};
+			
+			$scope.getNcaaTableData = function(){
+				if(sharedUtilService.getNcaaTable() == null){
+						grapeRestfulDataService.getNcaaTableData() 
+						.success(function(response) {
+							console.log("successfully retrieved ncaa table data "); 
+							if(response.result==="SUCCESS"){
+								$scope.ncaaTeams = response.ncaaTable;
+								sharedUtilService.setNcaaTable(response.ncaaTable);
+
+								$scope.calculateAverages();
+							}
+						})
+						.error(function(error) {
+							console.log(error);
+						});
+					} else {
+						$scope.ncaaTeams = sharedUtilService.getNcaaTable();
+						$scope.calculateAverages();
+					}
+				};
+			
+			$scope.getNcaaTeamTableData = function(){
+				if(typeof $scope.todaysNcaaGames === 'undefined'){
+					grapeRestfulDataService.getNcaaTeamTableData() 
+					.success(function(response) {
+						console.log("successfully retrieved ncaa team table data "); 
+						$scope.ncaaTeamReferenceList = response.ncaaTeamTable;
+						sharedUtilService.setNcaaTeamReferenceList($scope.ncaaTeamReferenceList);
+					})
+					.error(function(error) {
+						console.log(error);
+					});
+				} else {
+					$scope.ncaaTeamReferenceList = sharedUtilService.getNcaaTeamReferenceList();
+				}
+			};
+			
+			//FourthRound Functions----------------------------------------------
+			$scope.setFourthRoundTeamOne = function(team) {
+				if(typeof team != "undefined") {
+				$scope.fourthRoundTeamOne = team;
+				$scope.fourthRoundTeamOne.rank = team.rank;
+				if($scope.fourthRoundTeamOne != undefined && $scope.fourthRoundTeamTwo != undefined){
+					$scope.selectedHomeTeam = $scope.fourthRoundTeamOne;
+					$scope.selectedAwayTeam = $scope.fourthRoundTeamTwo;
+					$scope.calculateOdds();
+					$scope.fourthRoundOneTwo = {
+							"homeWinChance": $scope.homeWinChance,
+							"homeScore": $scope.homeScore,
+							"awayWinChance": $scope.awayWinChance,
+							"awayScore": $scope.awayScore
+					}
+				}
+				}
+			}
+			$scope.setFourthRoundTeamTwo = function(team) {
+				if(typeof team != "undefined") {
+				$scope.fourthRoundTeamTwo = team;
+				$scope.fourthRoundTeamTwo.rank = team.rank;
+				if($scope.fourthRoundTeamOne != undefined && $scope.fourthRoundTeamTwo != undefined){
+					$scope.selectedHomeTeam = $scope.fourthRoundTeamOne;
+					$scope.selectedAwayTeam = $scope.fourthRoundTeamTwo;
+					$scope.calculateOdds();
+					$scope.fourthRoundOneTwo = {
+							"homeWinChance": $scope.homeWinChance,
+							"homeScore": $scope.homeScore,
+							"awayWinChance": $scope.awayWinChance,
+							"awayScore": $scope.awayScore
+					}
+				}
+				}
+			}
+			
+			$scope.calculateFinalFourRoundOne = function(){
+				if($scope.eastTeam != undefined && $scope.westTeam != undefined){
+					$scope.selectedHomeTeam = $scope.eastTeam;
+					$scope.selectedAwayTeam = $scope.westTeam;
+					$scope.calculateOdds();
+					$scope.firstRoundOneTwo = {
+							"homeWinChance": $scope.homeWinChance,
+							"homeScore": $scope.homeScore,
+							"awayWinChance": $scope.awayWinChance,
+							"awayScore": $scope.awayScore
+					}
+				}
+				if($scope.southTeam != undefined && $scope.midwestTeam != undefined){
+					$scope.selectedHomeTeam = $scope.southTeam;
+					$scope.selectedAwayTeam = $scope.midwestTeam;
+					$scope.calculateOdds();
+					$scope.firstRoundThreeFour = {
+							"homeWinChance": $scope.homeWinChance,
+							"homeScore": $scope.homeScore,
+							"awayWinChance": $scope.awayWinChance,
+							"awayScore": $scope.awayScore
+					}
+				}
+			}
+			
+			$scope.setSecondRoundTeamOne = function(team) {
+				if(typeof team != "undefined") {
+					$scope.secondRoundTeamOne = team;
+					$scope.secondRoundTeamOne.rank = team.rank;
+					if($scope.secondRoundTeamOne != undefined && $scope.secondRoundTeamTwo != undefined){
+						$scope.selectedHomeTeam = $scope.secondRoundTeamOne;
+						$scope.selectedAwayTeam = $scope.secondRoundTeamTwo;
+						$scope.calculateOdds();
+						$scope.secondRoundOneTwo = {
+								"homeWinChance": $scope.homeWinChance,
+								"homeScore": $scope.homeScore,
+								"awayWinChance": $scope.awayWinChance,
+								"awayScore": $scope.awayScore
+						}
+					}
+				}
+			}
+			
+			$scope.setSecondRoundTeamTwo = function(team) {
+				if(typeof team != "undefined") {
+				$scope.secondRoundTeamTwo = team;
+				$scope.secondRoundTeamTwo.rank = team.rank;
+				if($scope.secondRoundTeamOne != undefined && $scope.secondRoundTeamTwo != undefined){
+					$scope.selectedHomeTeam = $scope.secondRoundTeamOne;
+					$scope.selectedAwayTeam = $scope.secondRoundTeamTwo;
+					$scope.calculateOdds();
+					$scope.secondRoundOneTwo = {
+							"homeWinChance": $scope.homeWinChance,
+							"homeScore": $scope.homeScore,
+							"awayWinChance": $scope.awayWinChance,
+							"awayScore": $scope.awayScore
+					}
+				}
+				}
+			}
+			
+			$rootScope.$on("setTeams", function(){
+	           $scope.setTeams();
+	           document.getElementById("finalFourContent").style.height = $window.innerHeight + "px";
+	        });
+			
+			$scope.setTeams = function() {
+				$scope.eastTeam = sharedUtilService.getEastTeamOne();
+				$scope.westTeam = sharedUtilService.getWestTeamOne();
+				$scope.southTeam = sharedUtilService.getSouthTeamOne();
+				$scope.midwestTeam = sharedUtilService.getMidwestTeamOne();
+				
+				$scope.calculateFinalFourRoundOne();
+			}
+
+			$scope.initialize = function() {
+				if (angular.isDefined($scope.dataReload)) {
+					$interval.cancel($scope.dataReload);
+				};
+				
+				
+				
+				
+				$scope.simulateQuery = false;
+				$scope.isDisabled    = false;
+		
+				$scope.getNcaaTableData();
+				$scope.getNcaaTeamTableData();
+				$scope.matchups = [];
+				sharedUtilService.setMatchupList($scope.matchups); 
+				
+				$scope.setTeams();
+
+				document.getElementById("content").style.height = $window.innerHeight;
+				$scope.$watch('$window.innerHeight', function() {
+					document.getElementById("content").style.height = $window.innerHeight;
+			    });
+			};
+
+			$scope.initialize();
+
+		} ])

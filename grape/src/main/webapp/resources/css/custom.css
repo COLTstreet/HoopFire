@@ -207,4 +207,85 @@ body {
 	background: #303030;
 }
 
-/** Overwrite Material CSS **/
+.team-tile {
+    border: 1px solid #FFFFFF;
+    padding: 2%;
+}
+
+.team-tile:hover {
+    background: #616161;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.border-bottom {
+	border-bottom: 1px solid white;
+}
+
+.border-top {
+	border-top: 1px solid white;
+}
+
+.border-right {
+	border-right: 1px solid white;
+}
+
+.border-left {
+	border-left: 1px solid white;
+}
+
+/*
+ *  Flex Layout Specifics
+*/
+main{
+  display:flex;
+  flex-direction:row;
+}
+.round{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  width:200px;
+  list-style:none;
+  padding:0;
+}
+  .round .spacer{ flex-grow:1; }
+  .round .spacer:first-child,
+  .round .spacer:last-child{ flex-grow:.5; }
+
+  .round .game-spacer{
+    flex-grow:1;
+  }
+
+/*
+ *  General Styles
+*/
+
+li.game{
+  padding-left:20px;
+}
+
+li.game.winner{
+  font-weight:bold;
+}
+li.game span{
+  float:right;
+  margin-right:5px;
+}
+
+li.game-top{ border-bottom:1px solid #aaa; }
+
+li.game-spacer{ 
+  border-right:1px solid #aaa;
+  min-height:40px;
+}
+
+li.game-bottom{ 
+  border-top:1px solid #aaa;
+}

@@ -22,8 +22,44 @@ sharedServices.factory('sharedUtilService', function() {
 	var todaysNcaaGames = [];
 	var injuriesList = [];;
 	var ncaaTeamReferenceList = [];
+	var eastTeamOne;
+	var westTeamOne;
+	var southTeamOne;
+	var midwestTeamOne;
 
 	return {
+		
+		setEastTeamOne : function(objectToSet) {
+			eastTeamOne = objectToSet;
+		},
+		
+		getEastTeamOne : function(objectToSet) {
+			return eastTeamOne;
+		},
+		
+		setWestTeamOne : function(objectToSet) {
+			westTeamOne = objectToSet;
+		},
+		
+		getWestTeamOne : function(objectToSet) {
+			return westTeamOne;
+		},
+		
+		setSouthTeamOne : function(objectToSet) {
+			southTeamOne = objectToSet;
+		},
+		
+		getSouthTeamOne : function(objectToSet) {
+			return southTeamOne;
+		},
+		
+		setMidwestTeamOne : function(objectToSet) {
+			midwestTeamOne = objectToSet;
+		},
+		
+		getMidwestTeamOne : function(objectToSet) {
+			return midwestTeamOne;
+		},
 
 		setNbaTable : function(objectToSet) {
 			nbaTable = objectToSet;

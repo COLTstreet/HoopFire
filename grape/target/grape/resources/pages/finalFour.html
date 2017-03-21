@@ -1,0 +1,64 @@
+<md-content id="finalFourContent" style="font-size: calc(.75em + .5vw);padding: 5%" layout="row" layout-align="start stretch" ng-controller="finalFourController">
+<div flex="33" layout="column" layout-align="none">
+	<div flex="50">
+		<div class="border-bottom" layout="column" layout-align="start center">
+			<div ng-click="setSecondRoundTeamOne(eastTeam)">
+				<span>{{eastTeam.team}}</span>
+				<span>{{firstRoundOneTwo.homeScore}}</span>
+			</div>
+		</div>
+		<div flex id="finalFourSpacer" class="full-height border-right">
+		</div>
+	</div>
+	<div flex="50">
+		<div class="border-bottom" layout="column" layout-align="start center">
+			<div ng-click="setSecondRoundTeamOne(westTeam)">
+				<span>{{westTeam.team}}</span>
+				<span>{{firstRoundOneTwo.awayScore}}</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div flex="33" layout="column" layout-align="none">
+	<div flex="10">
+	</div>
+	<div flex="20">
+		<div style="width: 50%;border-top: 1px solid;text-align: right;">
+			<span>{{secondRoundTeamOne.team}}</span>
+			<span>{{secondRoundOneTwo.homeScore}}</span>
+		</div>
+	</div>
+	<div flex="10">
+	</div>
+	<div flex="20">
+		<div style="width: 50%;float: right;border-top: 1px solid;">
+			<span>{{secondRoundTeamTwo.team}}</span>
+			<span>{{secondRoundOneTwo.awayScore}}</span>
+		</div>
+	</div>
+</div>
+
+<div flex="33" layout="column" layout-align="none">
+	<div flex="50">
+		<div class="border-bottom" layout="column" layout-align="start center">
+			<div ng-click="setSecondRoundTeamTwo(midwestTeam)">
+				<span>{{midwestTeam.team}}</span>
+				<span>{{firstRoundThreeFour.homeScore}}</span>
+			</div>
+		</div>
+		<div flex id="finalFourSpacer" class="full-height border-left">
+		</div>
+	</div>
+	<div flex="50">
+		<div class="border-bottom" layout="column" layout-align="start center">
+			<div ng-click="setSecondRoundTeamTwo(southTeam)">
+				<span>{{southTeam.team}}</span>
+				<span>{{firstRoundThreeFour.awayScore}}</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</md-content>

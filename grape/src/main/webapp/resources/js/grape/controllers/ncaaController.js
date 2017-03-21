@@ -426,12 +426,14 @@ grapeControllers.controller("ncaaController", [
 						console.log("successfully retrieved ncaa team table data "); 
 						$scope.ncaaTeamReferenceList = response.ncaaTeamTable;
 						sharedUtilService.setNcaaTeamReferenceList($scope.ncaaTeamReferenceList);
+						$scope.loading = false;
 					})
 					.error(function(error) {
 						console.log(error);
 					});
 				} else {
 					$scope.ncaaTeamReferenceList = sharedUtilService.getNcaaTeamReferenceList();
+					$scope.loading = false;
 				}
 			};
 			
@@ -552,6 +554,7 @@ grapeControllers.controller("ncaaController", [
 				if (angular.isDefined($scope.dataReload)) {
 					$interval.cancel($scope.dataReload);
 				};
+				$scope.loading = true;
 				
 				
 				$scope.simulateQuery = false;

@@ -23,7 +23,7 @@ grapeApp.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 	.when('/home', {
 		templateUrl: "/resources/pages/home.html",
-		controller: "homeController", 
+		controller: "homeController",
 		reloadOnSearch: false
 	})
 	.when('/nbabb', {
@@ -36,6 +36,36 @@ grapeApp.config(function($routeProvider, $locationProvider) {
 		controller: "ncaaController", 
 		reloadOnSearch: false
 	})
+	.when('/marchWest', {
+		templateUrl: "/resources/pages/marchWest.html", 
+		controller: "marchWestController", 
+		reloadOnSearch: false
+	})
+	.when('/marchEast', {
+		templateUrl: "/resources/pages/marchEast.html", 
+		controller: "marchEastController", 
+		reloadOnSearch: false
+	})
+	.when('/marchSouth', {
+		templateUrl: "/resources/pages/marchSouth.html", 
+		controller: "marchSouthController", 
+		reloadOnSearch: false
+	})
+	.when('/marchMidwest', {
+		templateUrl: "/resources/pages/marchMidwest.html", 
+		controller: "marchMidwestController", 
+		reloadOnSearch: false
+	})
+	.when('/finalFour', {
+		templateUrl: "/resources/pages/finalFour.html", 
+		controller: "finalFourController", 
+		reloadOnSearch: false
+	})
+	.when('/march', {
+		templateUrl: "/resources/pages/march.html", 
+		controller: "marchController", 
+		reloadOnSearch: false
+	})
 	.otherwise({
 		templateUrl: "/resources/pages/home.html", 
 		controller: "homeController", 
@@ -44,7 +74,7 @@ grapeApp.config(function($routeProvider, $locationProvider) {
 	
     
     // use the HTML5 History API
-$locationProvider.html5Mode(true);
+$locationProvider.html5Mode(false);
 	
 	
 }); 
